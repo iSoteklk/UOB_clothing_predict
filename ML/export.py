@@ -8,7 +8,7 @@ colors = ['Red', 'Blue', 'Green', 'Black', 'White', 'Yellow', 'Pink', 'Purple']
 genders = ['male', 'female', 'unisex']
 times = ['night', 'morning', 'evening', 'noon']
 categories = ['tousers', 't-shirt', 'shoes', 'jeans', 'waistcoat', 'blouse', 'jacket',
-              'dress', 'shirt', 'suit', 'coat', 'shorts', 'sport', 'skirt', 'tops', 'hodie', 'tie']
+              'dress', 'shirt', 'suit', 'coat', 'shorts', 'sport', 'skirt', 'tops', 'hoodie', 'tie']
 
 records = []
 for _ in range(10000):
