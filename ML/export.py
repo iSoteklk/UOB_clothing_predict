@@ -3,12 +3,13 @@ import random
 
 # clothing_names = ['Shirt', 'Pants', 'Dress',
 #                   'Jacket', 'Skirt', 'Blouse', 'Jeans', 'T-shirt']
-situations = ['Wedding', 'Party', 'Work', 'Casual', 'Formal', 'Outdoor']
-colors = ['Red', 'Blue', 'Green', 'Black', 'White', 'Yellow', 'Pink', 'Purple']
+types = ['Casual', 'Formal']
+situations = ['Wedding', 'Party', 'Work', 'Outing']
+colors = ["Black", "White", "Blue", "Red", "Green", "Yellow", "Pink", "Purple", "Orange", "Gray", "Brown", "Beige"]
 genders = ['male', 'female', 'unisex']
 times = ['night', 'morning', 'evening', 'noon']
-categories = ['tousers', 't-shirt', 'shoes', 'jeans', 'waistcoat', 'blouse', 'jacket',
-              'dress', 'shirt', 'suit', 'coat', 'shorts', 'sport', 'skirt', 'tops', 'hodie', 'tie']
+categories = ['tousers', 't-shirt', 'shoes', 'jeans', 'coat',
+              'dress', 'shirt', '3-piece suit', '2-piece suit','skirt', 'top', 'hoodie','heels']
 
 records = []
 for _ in range(10000):
