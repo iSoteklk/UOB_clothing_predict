@@ -2,6 +2,8 @@
 import os
 import joblib
 from sklearn.feature_extraction.text import CountVectorizer
+import copy
+import numpy as np
 
 
 def load_model_and_vectorizer():
@@ -21,17 +23,31 @@ def load_model_and_vectorizer():
 
 
 async def predict_clothing(situation, color, time, gender, categories):
-    model, vectorizer = load_model_and_vectorizer()
+    data = []
 
-    predictions = {}
+    i = 0
 
-    for category in categories:
-        # Vectorize the input
-        input_text = ' '.join([situation, color, time, gender, category])
-        input_vectorized = vectorizer.transform([input_text])
+    while i < 5:
+        # Load the model and vectorizer at each iteration
+        model, vectorizer = load_model_and_vectorizer()
 
-        # Predict the clothing name
-        predicted_clothing = model.predict(input_vectorized)[0]
-        predictions[category] = predicted_clothing
+        predictions = {}
+        for category in categories:
+            # Vectorize the input
+            input_text = ' '.join([situation, color, time, gender, category])
+            input_vectorized = vectorizer.transform([input_text])
 
-    return predictions
+            # Predict the clothing name probabilities
+            prediction_probs = model.predict_proba(input_vectorized)[0]
+
+            # Get the index of the second-best prediction
+            best_idx = np.argsort(-prediction_probs)[i]
+
+            # Get the name of the second-best predicted clothing
+            second_best_prediction = model.classes_[best_idx]
+            predictions[category] = second_best_prediction
+
+        data.append(predictions)
+        i = i + 1
+
+    return data
