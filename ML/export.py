@@ -8,6 +8,7 @@ situations = ['Wedding', 'Party', 'Work', 'Outing']
 colors = ["Black", "White", "Blue", "Red", "Green", "Yellow", "Pink", "Purple", "Orange", "Gray", "Brown", "Beige"]
 genders = ['male', 'female', 'unisex']
 times = ['night', 'morning', 'evening', 'noon']
+
 categories = ['tousers', 't-shirt', 'shoes', 'jeans', 'coat',
               'dress', 'shirt', '3-piece suit', '2-piece suit','skirt', 'top', 'hoodie','heels']
 
