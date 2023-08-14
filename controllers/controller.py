@@ -12,9 +12,9 @@ def load_model_and_vectorizer():
 
     # Construct absolute file paths for the model and vectorizer
     model_filename = os.path.join(
-        module_path, '..', 'ML', 'clothing_model_1.joblib')
+        module_path, '..', 'ML', 'clothing_model_2.joblib')
     vectorizer_filename = os.path.join(
-        module_path, '..', 'ML', 'count_vectorizer_1.joblib')
+        module_path, '..', 'ML', 'count_vectorizer_2.joblib')
 
     # Load the trained model and vectorizer
     model = joblib.load(model_filename)
@@ -22,7 +22,7 @@ def load_model_and_vectorizer():
     return model, vectorizer
 
 
-async def predict_clothing(situation, color, time, gender, categories):
+async def predict_clothing(situation, color, time, gender, type, categories):
     data = []
 
     i = 0
@@ -34,18 +34,19 @@ async def predict_clothing(situation, color, time, gender, categories):
         predictions = {}
         for category in categories:
             # Vectorize the input
-            input_text = ' '.join([situation, color, time, gender, category])
+            input_text = ' '.join(
+                [situation, color, time, gender, type, category])
             input_vectorized = vectorizer.transform([input_text])
 
             # Predict the clothing name probabilities
             prediction_probs = model.predict_proba(input_vectorized)[0]
 
-            # Get the index of the second-best prediction
+            # Get the index of the next-best prediction
             best_idx = np.argsort(-prediction_probs)[i]
 
-            # Get the name of the second-best predicted clothing
-            second_best_prediction = model.classes_[best_idx]
-            predictions[category] = second_best_prediction
+            # Get the name of the next-best predicted clothing
+            next_best_prediction = model.classes_[best_idx]
+            predictions[category] = next_best_prediction
 
         data.append(predictions)
         i = i + 1

@@ -4,11 +4,11 @@ from sklearn.naive_bayes import MultinomialNB
 import joblib
 
 # Read the CSV file into a DataFrame
-filename = 'clothing_data2.csv'
+filename = 'image_data.csv'
 df = pd.read_csv(filename)
 
 # Define the input features (X) and target variable (y)
-X = df[['situation', 'color', 'time', 'category', 'gender']].astype(
+X = df[['situation', 'color', 'type', 'time', 'category', 'gender']].astype(
     str).values.tolist()
 y = df['clothing_name']
 
@@ -21,11 +21,11 @@ model = MultinomialNB()
 model.fit(X_vectorized, y)
 
 # Save the trained model
-model_filename = 'models/clothing_model_1.joblib'
+model_filename = 'clothing_model_2.joblib'
 joblib.dump(model, model_filename)
 
 # Save the CountVectorizer
-vectorizer_filename = 'models/count_vectorizer_1.joblib'
+vectorizer_filename = 'count_vectorizer_2.joblib'
 joblib.dump(vectorizer, vectorizer_filename)
 
 print("Model and CountVectorizer saved successfully.")

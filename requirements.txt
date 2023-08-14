@@ -6,3 +6,6 @@ uvicorn
 fastapi
 asyncio
 aiofiles
+numpy
+fuzzywuzzy
+
