@@ -4,22 +4,22 @@ from sklearn.feature_extraction.text import CountVectorizer
 import os
 
 
-def predict_clothing(situation, color, time, gender, categories):
+def predict_clothing(situation, color, time, gender, type, categories):
     current_directory = os.getcwd()
     print("Current working directory:", current_directory)
     # Load the trained model
-    model_filename = 'clothing_model_1.joblib'
+    model_filename = 'clothing_model_2.joblib'
     model = joblib.load(model_filename)
 
     # Load the vectorizer
-    vectorizer_filename = 'count_vectorizer_1.joblib'
+    vectorizer_filename = 'count_vectorizer_2.joblib'
     vectorizer = joblib.load(vectorizer_filename)
 
     predictions = {}
 
     for category in categories:
         # Vectorize the input
-        input_text = ' '.join([situation, color, time, gender, category])
+        input_text = ' '.join([situation, color, time, gender, type, category])
         input_vectorized = vectorizer.transform([input_text])
 
         # Predict the clothing name
