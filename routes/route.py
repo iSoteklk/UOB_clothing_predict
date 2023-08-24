@@ -6,7 +6,7 @@ router = APIRouter()
 
 
 @router.get("/predict/{text}/{color}/{gender}/{type}/{categories}")
-# http://127.0.0.1:8000/predict/wedding/white/morning/male/t-shirt,trouser,skirt,shirt,short
+# http://127.0.0.1:8000/predict/I%20want%20to%20go%20outing%20in%20the%20morning/black/male/casual/Watch,Shoes,Shirt,Trousers,sunglass
 async def read_item(
     text: str,
     color: str,
@@ -21,30 +21,6 @@ async def read_item(
     print(f"{situation}, {color}, {time}, {gender},{type} {categories}")
     predictions = await predict_clothing(situation, color, time, gender, type, categories)
     return predictions
-
-
-# def find_matching_time(input_string):
-#     array_of_words = ["morning", "evening", "noon", "night"]
-
-#     input_string_lower = input_string.lower()
-
-#     for word in array_of_words:
-#         if word in input_string_lower:
-#             return word
-
-#     return ""
-
-
-# def find_matching_situation(input_string):
-#     array_of_words = ["party", "wedding", "work", "outing"]
-
-#     input_string_lower = input_string.lower()
-
-#     for word in array_of_words:
-#         if word in input_string_lower:
-#             return word
-
-#     return ""
 
 
 def find_matching_time(input_string):
