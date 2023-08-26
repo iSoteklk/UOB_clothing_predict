@@ -6,7 +6,7 @@ router = APIRouter()
 
 
 @router.get("/predict/{text}/{color}/{gender}/{type}/{categories}")
-# http://127.0.0.1:8000/predict/I%20want%20to%20go%20outing%20in%20the%20morning/black/male/casual/Watch,Shoes,Shirt,Trousers,sunglass
+# http://127.0.0.1:8000/predict/I want to go toa party at night/black/male/casual/Watch,Shoes,Shirt,Trousers,sunglass
 async def read_item(
     text: str,
     color: str,
