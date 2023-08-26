@@ -18,4 +18,4 @@ jobs:
           sudo docker build -t mlearning .
           sudo docker run -d -p 8000:8000 mlearning
         env:
-          GITHUB_TOKEN: ${{ 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 }}
+          GITHUB_TOKEN: ${{ secrets.mlearning }} 
